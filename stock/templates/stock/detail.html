@@ -1,0 +1,28 @@
+{% extends 'stock/base.html' %}
+
+{% block title %}Company detail Analysis {% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="panel panel-default col-md-4">
+        <a href="{{company.get_absolute_url}}">
+            <div class="panel-body img">
+                <img src="{{company.image.url}}" class="img-responsive zoom">
+            </div>
+        </a>
+        <hr>
+        <div class="panel-header">
+            <h4 style="text-align:center"> {{company.name}}</h4>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+
+        <a style="display:block; margin-bottom:20px" href="{% url 'stock:predict_sales' company.id %}" role="button" class="btn btn-primary">Predict Sales</a>
+        <a style="display:block;  margin-bottom:20px" href="{%url 'stock:predict_profit' company.id %}" role="button" class="btn btn-success">Predict Profit</a>
+        <a style="display:block;  margin-bottom:20px" href="{%url 'stock:predict_demand' company.id %}" role="button" class="btn btn-info">Predict Demand</a>
+    </div>
+</div>
+
+
+{% endblock %}

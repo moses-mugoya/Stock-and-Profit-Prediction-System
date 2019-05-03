@@ -1,0 +1,28 @@
+{% extends 'stock/base.html' %}
+
+{% block title %} Dashboard {% endblock %}
+
+{% block body %}
+<div class="container" xmlns="http://www.w3.org/1999/html">
+    {% load i18n %}
+    <div class="col-md-12">
+        <h1>Dashboard</h1>
+        <hr>
+        <p style="font-size:20px">Welcome to your dashboard. You can <a href="{% url 'account:edit' %}"> edit your account</a> or <a href="{% url 'password_change' %}">{% trans 'change your password' %}.</a>
+        </p>
+    </div>
+    {% for comp in company %}
+    <div class="panel panel-default col-md-4">
+        <a href="{{comp.get_absolute_url}}">
+            <div class="panel-body img">
+                <img src="{{comp.image.url}}" class="img-responsive zoom">
+            </div>
+        </a>
+        <hr>
+        <div class="panel-header">
+            <h4 style="text-align:center"> {{comp.name}}</h4>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
